@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="side-navbar" style="border: 1px solid black; width: 30%; float: left; display: inline-block; box-sizing: border-box; height: 450px;">
+		<ul>
+			<a href="#">
+				<li>Home</li>
+			</a>
+			<a href="#">
+				<li>Person</li>
+			</a>
+		</ul>
+	</div>
+	<div class="person-list" style="width: 70%; float: left; display: inline-block; box-sizing: border-box;">
+		<button onClick="showModal()" style="margin: 30px; width: 100px;height: 30px;">New Person</button>
+		<div>
+			<table style="width: 100%;">
+				<tr>
+					<td id="list-title-first" style="width: 50%; text-align: center; border-right: 1px solid black;border-bottom: 1px solid black; ">First Name</td>
+					<td id="list-title-last" style="width: 50%; text-align: center; border-bottom: 1px solid black;">Last Name</td>
+				</tr>
+				<tr id="name-list" style="opacity: 0;">
+					<td id="list-first-name" style="width: 50%; text-align: center; border-right: 1px solid black;"></td>
+					<td id="list-last-name"  style="width: 50%; text-align: center;"></td>
+				</tr>
+			</table>
+		</div>	
+	</div>
+	<div id="add-person-modal" style="display: none;position: absolute; left: 50%;top: 20%;">
+		<div style="width: 70%;border: 1px solid black; text-align: center;">
+			<form action="">
+				<label for="first-name-entry" style="width: 100%; display: block; float: left;margin-top: 10px;">First Name</label>
+				<input id="new-first" name="first-name-entry" type="text" style="width: 80%; margin-top: 10px;">
+
+				<label for="last-name-entry" style="width: 100%; display: block; float: left;margin-top: 10px;">Last Name</label>
+				<input id="new-last" name="last-name-entry" type="text"  style="width: 80%; margin-top: 10px;">
+
+				<input type="submit" value="Save Name" onclick="savePerson(); addPerson(); return false;" style="margin: 10px;"/>
+				<input type="submit" value="Cancel" onclick="hideModal(); return false;" style="margin: 10px;"/>
+			</form>
+		</div>
+	</div>
+</body>
+
+	<script>
+		
+		var first = [];
+		var last = [];
+		function savePerson() {
+		    first.push(document.getElementById('new-first').value);
+		    document.getElementById('new-first').value = '';
+
+		    last.push(document.getElementById('new-last').value);
+		    document.getElementById('new-last').value = '';
+		    
+		    document.getElementById('add-person-modal').style.display = 'none';
+		    document.getElementById('name-list').style.opacity = 1;
+
+		}
+		
+
+		function addPerson() {
+			// if ((first.push(document.getElementById('new-first').value === '')) && (last.push(document.getElementById('new-last').value === '')) ) {
+				// alert('you did not enter anyone!');
+			// } else {
+				console.log(last.push(document.getElementById('new-last').innerHTML));
+
+				console.log(first);
+				for(i = 0; i <= first.length; i++) {
+					document.getElementById('list-first-name').innerHTML = first.join('<br/>');
+				}
+				console.log(last);
+				for(i = 0; i <= last.length; i++) {
+					document.getElementById('list-last-name').innerHTML = last.join('<br/>');
+				}
+			}
+		// }
+
+		
+
+		function showModal(){
+			document.getElementById('add-person-modal').style.display = 'block';
+		}
+		function hideModal(){
+			document.getElementById('add-person-modal').style.display = 'none';
+		}
+
+		
+		
+		
+		// function savePerson(){
+		// // var first = '';
+		// // var last = '';
+		
+		// // first = document.getElementById('new-first').value;
+		// // last = document.getElementById('new-last').value;
+
+		// 	document.getElementById('new-first').innerHTML = document.getElementById('list-first-name').innerHTML;
+		// 	// document.getElementById('list-last-name').innerHTML = last;
+		// }
+
+		// // var person = '';
+		// // person = document.getElementById('first-name').innerHTML
+	</script>
+</html>
