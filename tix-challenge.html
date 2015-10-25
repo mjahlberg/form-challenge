@@ -19,14 +19,18 @@
 		<button onClick="showModal()" style="margin: 30px; width: 100px;height: 30px;">New Person</button>
 		<div>
 			<table style="width: 100%;">
+
 				<tr>
 					<td id="list-title-first" style="width: 50%; text-align: center; border-right: 1px solid black;border-bottom: 1px solid black; ">First Name</td>
 					<td id="list-title-last" style="width: 50%; text-align: center; border-bottom: 1px solid black;">Last Name</td>
 				</tr>
+
+				<!-- row and table that get inserted as new names appear -->
 				<tr id="name-list" style="opacity: 0;">
 					<td id="list-first-name" style="width: 50%; text-align: center; border-right: 1px solid black;"></td>
 					<td id="list-last-name"  style="width: 50%; text-align: center;"></td>
 				</tr>
+
 			</table>
 		</div>	
 	</div>
@@ -48,32 +52,44 @@
 
 	<script>
 		
+		// create empty arrays for first and last names
 		var first = [];
 		var last = [];
+
+		// function to push first and last names to each array
 		function savePerson() {
 		    first.push(document.getElementById('new-first').value);
-		    document.getElementById('new-first').value = '';
-
 		    last.push(document.getElementById('new-last').value);
+		    
+		    // clear first name input after value is added to array
+		    document.getElementById('new-first').value = '';
+		    
+		    // clear last name input after value is added to array
 		    document.getElementById('new-last').value = '';
 		    
+		    // hide modal after name has been submitted to the list
 		    document.getElementById('add-person-modal').style.display = 'none';
+
+		    // add styling once names added to list
 		    document.getElementById('name-list').style.opacity = 1;
 
 		}
 		
-
+		// function with for loop to iterate through the array and add first and last name into the table
 		function addPerson() {
+
+			// attempt at building an error handle if form submitted without name, did not quite manage to finish it
 			// if ((first.push(document.getElementById('new-first').value === '')) && (last.push(document.getElementById('new-last').value === '')) ) {
 				// alert('you did not enter anyone!');
 			// } else {
-				console.log(last.push(document.getElementById('new-last').innerHTML));
 
-				console.log(first);
+				// console.log(last.push(document.getElementById('new-last').innerHTML));
+
+				// console.log(first);
 				for(i = 0; i <= first.length; i++) {
 					document.getElementById('list-first-name').innerHTML = first.join('<br/>');
 				}
-				console.log(last);
+				// console.log(last);
 				for(i = 0; i <= last.length; i++) {
 					document.getElementById('list-last-name').innerHTML = last.join('<br/>');
 				}
@@ -81,7 +97,7 @@
 		// }
 
 		
-
+		// functions to show and hide modal onclick
 		function showModal(){
 			document.getElementById('add-person-modal').style.display = 'block';
 		}
@@ -90,7 +106,7 @@
 		}
 
 		
-		
+		// this is the code I started out with and it is very similar to what I did in the in-person interview
 		
 		// function savePerson(){
 		// // var first = '';
